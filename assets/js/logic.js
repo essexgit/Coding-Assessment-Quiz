@@ -1,45 +1,44 @@
-// A start button that when clicked a timer starts and the first question appears.
+// START BUTTON
+    // loads Q&A
+    // starts TIMER
 
-// Listen for the start button being clicked on
+// TIMER function
+    // START TIMER
+        // max time value 
+        // countdown
+        // current time
+        
+    // CUT TIME
+        // cut value
+    // STOP TIMER
+        // If zero
+        // last question
+        // final time
 
-// Clicking the start button performs two functions:
+// ANSWER function
+    // if correct
+        // next
+        
+    // if wrong
+     // show correct
+     // deduct time
+     // next
 
-// The timer starts
+// DISPLAY functions
+    //  Start Group
+        //  submit
+        //  instructions
+    // Run Group
+        // choices
+        // chosen
+        // question
+        // countdown
+        // answers
+    // End Group
+        // result
+        // score
+        // instructions
 
-// Starting the timer performs two functions:
-
-// The start time is set
-
-// The timer counts down
-
-// If the timer equals zero, stop the game
-
-// The first questions appear
-
-// Get the question and print to the screen
-
-// List the answers and invite selection
-
-// Listen for a click on the answers
-
-// If the answer is clicked check if the answer is correct
-
-// Indicate if the answer is correct or not
-
-// If the answer is correct, add to the score
-
-// If the answer is not correct, reduce the time
-
-// Replace with the new question and answers
-
-// Questions contain buttons for each answer.
-
-// When answer is clicked, the next question appears
-
-// If there are no more questions, stop the game
-
-// If the answer clicked was incorrect then subtract time from the clock
-
-// The quiz should end when all questions are answered or the timer reaches 0.
-
-// When the game ends, it should display their score and give the user the ability to save their initials and their score;
+// HIGHSCORE function add
+    // add initial to score reference
+       // add to local storage
