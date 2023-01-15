@@ -10,6 +10,7 @@ function startGame() {
     showing();
     loadQuestionTitle();
     loadQuestionChoices();
+    choosing();
 }
 // loads Q&A
 
@@ -63,9 +64,28 @@ function timer() {
 // ANSWER function
 // choose
 function choosing() {
-    // loop buttons adding listener
-    // let choice = 
+    let answerCheck = document.querySelector("#choices");
+    answerCheck.addEventListener("click", function (event) {
+        let answer = event.target.id;
+        let answerText = event.target.textContent;
+        console.log(answer);
+        console.log(answerText);
+        checking(answerText);
+    });
 }
+
+function checking(chosenString) {
+    if (chosenString === questions[0].answer) {
+        console.log("correct");
+    } else { console.log("Wrong"); }
+}
+
+function wrongAnswer() {
+}
+function correctAnswer() {
+
+}
+
 // if correct
 // next
 
