@@ -5,9 +5,9 @@ var questions = [
         answer: "alerts"
     },
     {
-        title: "Javascript is an _______ language?",
-        choices: ["Object-Oriented", "Object-Based", "Procedural", "Declarative "],
-        answer: "Object-Oriented"
+        title: "Which is not 'falsy'?",
+        choices: ["0", "NaN", "let x", "undefined"],
+        answer: "let x"
     },
     {
         title: "What does the ‘toLocaleString()’ method do in JS?",

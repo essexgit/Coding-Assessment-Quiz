@@ -88,3 +88,11 @@ li:nth-child(odd) {
   top: 10px;
   right: 10px;
 }
+
+.bgred {
+  background-color: red;
+}
+
+.bggreen {
+  background-color: green;
+}
