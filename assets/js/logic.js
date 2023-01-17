@@ -2,10 +2,19 @@
 let questCounter = 0;
 let start = document.querySelector("#start");
 let startScreen = document.querySelector("#start-screen");
+let endScreen = document.querySelector("#end-screen");
 let questionScreen = document.querySelector("#questions");
 let questContTitle = document.querySelector("#question-title");
 let questContChoices = document.querySelector("#choices");
 let nextBtn = document.querySelector("#next");
+let finalScore = document.querySelector("#final-score");
+let initialEnt = document.querySelector("#initials");
+let submitBtn = document.querySelector("#submit");
+let feebackDiv = document.querySelector("#feedback");
+// Timer variables
+let whatsTheTime;
+let startTime = 64;
+let time = document.querySelector("#time"); // referencing time element
 
 let startButton = start.addEventListener("click", () => {
     timer();
@@ -27,7 +36,6 @@ function loadQuestionTitle(questCounter) {
     showing();
     // check question available
     if (questCounter < questions.length) {
-        console.log(`loading ${questCounter}`);
         questContTitle.textContent = questions[questCounter].title;
         loadQuestionChoices(questCounter);
     } else { endGame(); };
@@ -55,25 +63,19 @@ function loadQuestionChoices(questCounter) {
 
 // TIMER function
 function timer() {
-    let startTime = 64;
-    let timeLeft = startTime;
+
+    // let timeLeft = startTime;
+    time.textContent = startTime;
     // countdown
     whatsTheTime = setInterval(function () {
-        let time = document.querySelector("#time");
-        timeLeft--;
-        time.textContent = timeLeft;
-        if (timeLeft === 0) {
+        // time.textContent = timeLeft;
+        startTime--;
+        time.textContent = startTime;
+        if (startTime === 0) {
             clearInterval(whatsTheTime);
         }
     }, 1000);
 }
-
-// CUT TIME
-// cut value
-// STOP TIMER
-// If zero
-// last question
-// final time
 
 // choose
 function choosing(questCounter) {
@@ -81,8 +83,6 @@ function choosing(questCounter) {
         let answerID = event.target.id;
         let answerText = event.target.textContent;
         questContChoices.removeEventListener;
-        console.log(answerID);
-        console.log(answerText);
         checking(answerText, answerID, questCounter);
     }, { once: true });
 }
@@ -107,22 +107,22 @@ function wrongAnswer(correctChoiceIndex, answerID, questCounter) {
     let wrongBox = document.querySelector(`#${answerID}`);
     tickBox.classList.add("bggreen");
     wrongBox.classList.add("bgred");
+    startTime = startTime - 10;
     nextQuestion(questCounter);
 }
 
 function nextQuestion(questCounter) {
     nextBtn.classList.remove("hide");
-    nextButton(questCounter);
+
 }
 
-function nextButton(questCounter) {
-    nextBtn.addEventListener("click", () => {
-        clearQuestions();
-        questCounter++;
-        console.log(` next ${questCounter}`);
-        loadQuestionTitle(questCounter);
-    });
-}
+
+nextBtn.addEventListener("click", () => {
+    clearQuestions();
+    questCounter++;
+    loadQuestionTitle(questCounter);
+});
+
 
 function clearQuestions() {
     questionScreen.classList.add("hide");
@@ -131,7 +131,9 @@ function clearQuestions() {
 };
 
 function endGame() {
-    console.log("end");
+    clearInterval(whatsTheTime);
+    nextBtn.classList.add('hide');
+
 }
 
 // End Group
