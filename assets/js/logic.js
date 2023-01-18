@@ -143,26 +143,25 @@ function endGame() {
 }
 
 submitBtn.addEventListener("click", () => {
-    // final score submit object
-    let scoreObj = [];
-    scoreObj = JSON.stringify([{
-        gameScore: startTime,
-        gameInitials: initialEnt.value
-    }]);
-    let storedScores = localStorage.getItem('scoreObj');
-    if (storedScores !== null) {
-        scoreObj += storedScores;
-    }
+    // capture the initials string
+    let newInitials = initialEnt.value;
 
-    localStorage.setItem('scoreObj', scoreObj);
+    // final score submit object ready
+    let newScoreQbj = JSON.stringify({
+        time: startTime,
+        initials: newInitials
+    });
+
+    // check if scores array in local storage or make one
+    if (localStorage.getItem('scoreObj') === null) {
+        localStorage.setItem('scoreObj', '[]'); // create array passing bracket in string
+    }
+    //get current highscore array
+    let oldScoresObjs = JSON.parse(localStorage.getItem('scoreObj'));
+    // add new score to array
+    oldScoresObjs.push(newScoreQbj);
+    //
+    localStorage.setItem('scoreObj', JSON.stringify(oldScoresObjs));
+    //reload page to restart game
     location.reload();
 });
-// End Group
-    // result
-    // score
-    // instructions
-    // start button display
-
-// HIGHSCORE function add
-    // add initial to score reference
-    // add to local storage
