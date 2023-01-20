@@ -26,9 +26,12 @@ window.onload = function () {
 
 let clearButton = clearHighScore.addEventListener("click", clearScores);
 function clearScores() {
-    localStorage.scoreObj = [];
+    // check if scores array in local storage or make one
+
+    localStorage.scoreObj = JSON.stringify([]); // create array passing bracket in string
     location.reload();
 }
+
 
 
 

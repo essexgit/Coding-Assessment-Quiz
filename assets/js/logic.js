@@ -153,7 +153,7 @@ submitBtn.addEventListener("click", () => {
     });
 
     // check if scores array in local storage or make one
-    if (localStorage.getItem('scoreObj') === null) {
+    if (localStorage.getItem('scoreObj') === null || localStorage.getItem('scoreObj') === '') {
         localStorage.setItem('scoreObj', '[]'); // create array passing bracket in string
     }
     //get current highscore array
