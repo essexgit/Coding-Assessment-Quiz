@@ -6,7 +6,7 @@ let endScreen = document.querySelector("#end-screen");
 let questionScreen = document.querySelector("#questions");
 let questContTitle = document.querySelector("#question-title");
 let questContChoices = document.querySelector("#choices");
-let nextBtn = document.querySelector("#next");
+// let nextBtn = document.querySelector("#next");
 let finalScore = document.querySelector("#final-score");
 let initialEnt = document.querySelector("#initials");
 let submitBtn = document.querySelector("#submit");
@@ -52,8 +52,8 @@ function loadQuestionTitle(questCounter) {
 // showing, question, choices, chosen, countdown, answers
 function showing() {
     questionScreen.classList.remove("hide");
-    feebackDiv.classList.add('hide');
-    feebackDiv.textContent = '';
+    // feebackDiv.classList.add('hide');
+    // feebackDiv.textContent = '';
 }
 function loadQuestionChoices(questCounter) {
     // get choice array
@@ -110,17 +110,20 @@ function checking(answerText, answerID, questCounter) {
 
 function correctAnswer(answerID, questCounter) {
     feebackDiv.textContent = 'Correct';
-    let tickBox = document.querySelector(`#${answerID}`);
-    tickBox.classList.add("bggreen");
+    //removing answer process
+    // let tickBox = document.querySelector(`#${answerID}`);
+    // tickBox.classList.add("bggreen");
     nextQuestion(questCounter);
 }
 
 function wrongAnswer(correctChoiceIndex, answerID, questCounter) {
     feebackDiv.textContent = 'Wrong';
-    let tickBox = document.querySelector(`#choice${correctChoiceIndex}`);
-    let wrongBox = document.querySelector(`#${answerID}`);
-    tickBox.classList.add("bggreen");
-    wrongBox.classList.add("bgred");
+
+    // removing answer process
+    // let tickBox = document.querySelector(`#choice${correctChoiceIndex}`);
+    // let wrongBox = document.querySelector(`#${answerID}`);
+    // tickBox.classList.add("bggreen");
+    // wrongBox.classList.add("bgred");
     startTime = startTime - 10;
     if (startTime <= 0) {
         finishEarly();
@@ -136,15 +139,18 @@ function finishEarly() {
 }
 
 function nextQuestion(questCounter) {
-    nextBtn.classList.remove("hide");
-}
-
-
-nextBtn.addEventListener("click", () => {
     clearQuestions();
     questCounter++;
     loadQuestionTitle(questCounter);
-});
+    // nextBtn.classList.remove("hide");
+}
+
+// removing next button
+// nextBtn.addEventListener("click", () => {
+// clearQuestions();
+// questCounter++;
+// loadQuestionTitle(questCounter);
+// });
 
 
 function clearQuestions() {
@@ -155,7 +161,7 @@ function clearQuestions() {
 
 function endGame() {
     clearInterval(whatsTheTime);
-    nextBtn.classList.add('hide');
+    // nextBtn.classList.add('hide');
     endScreen.classList.remove('hide');
     finalScore.textContent = startTime;
 
