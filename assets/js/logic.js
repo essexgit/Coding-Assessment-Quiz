@@ -36,10 +36,17 @@ function hiding() {
 function loadQuestionTitle(questCounter) {
     showing();
     // check question available
-    if (questCounter < questions.length) {
+    if (whatsTheTime <= 0) {
+        startTime = 0;
+        console.log('endgame at zero time');
+        endGame();
+    } else if (questCounter < questions.length) {
         questContTitle.textContent = questions[questCounter].title;
         loadQuestionChoices(questCounter);
-    } else { endGame(); };
+    } else {
+        console.log('end game at zero questions');
+        endGame();
+    };
 }
 
 // showing, question, choices, chosen, countdown, answers
@@ -74,8 +81,9 @@ function timer() {
         // time.textContent = timeLeft;
         startTime--;
         time.textContent = startTime;
-        if (startTime === 0) {
+        if (startTime <= 0) {
             clearInterval(whatsTheTime);
+            startTime = 0;
         }
     }, 1000);
 }
@@ -114,7 +122,17 @@ function wrongAnswer(correctChoiceIndex, answerID, questCounter) {
     tickBox.classList.add("bggreen");
     wrongBox.classList.add("bgred");
     startTime = startTime - 10;
+    if (startTime <= 0) {
+        finishEarly();
+    }
     nextQuestion(questCounter);
+}
+
+function finishEarly() {
+    startTime = 0;
+    time.textContent = 0;
+    clearQuestions();
+    endGame();
 }
 
 function nextQuestion(questCounter) {
@@ -140,6 +158,7 @@ function endGame() {
     nextBtn.classList.add('hide');
     endScreen.classList.remove('hide');
     finalScore.textContent = startTime;
+
 }
 
 submitBtn.addEventListener("click", () => {
